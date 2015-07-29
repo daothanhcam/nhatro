@@ -6,7 +6,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.integer :capacity
       t.string :contact
       t.string :description
-      t.integer :type
+      t.integer :house
       t.string :address
       t.float :rating
 

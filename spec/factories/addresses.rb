@@ -21,6 +21,7 @@ FactoryGirl.define do
     bed {[true, false].sample}
     ceiling_fan {[true, false].sample}
     price {rand(1..10)*1000000}
+    house {rand(0..1)}
 
     after(:build) do |address|
       address.reviews << FactoryGirl.build(:review, address: address)

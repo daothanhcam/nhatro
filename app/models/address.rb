@@ -2,12 +2,17 @@ class Address < ActiveRecord::Base
   include RailsAdmin::Address
   attr_accessor :google_map
 
+  validates :title, presence: true
+  validates :region, presence: true
+  validates :house, presence: true
   validates :capacity, presence: true
   validates :contact, presence: true
   validates :address, presence: true
   validates :square, presence: true
   validates :price, presence: true
   validates :description, presence: true
+  validates :lat, presence: true
+  validates :lng, presence: true
 
   paginates_per Settings.pagination.per_page
 
@@ -30,9 +35,9 @@ class Address < ActiveRecord::Base
 
   scope :by_province, ->province{joins(:region).where "regions.province = ?", province}
 
-  enum type: [:apartment, :villa]
+  enum house: [:apartment, :villa]
 
-    
+
   scope :order_by_colunm, ->object do
     case object
     when Settings.type.title
@@ -57,9 +62,9 @@ class Address < ActiveRecord::Base
   end
 
   PARAMS_ATTRIBUTES = [
-    :id, :lng, :lat, :capacity, :contact,
-    :description, :type, :square, :address, :price, :parking,
-    :air_conditioner, :ceilling_fan, :bed, :washing_machine, :television,
+    :user_id, :region_id, :id, :lng, :lat, :capacity, :contact, :title,
+    :description, :house, :square, :address, :price, :parking,
+    :air_conditioner, :ceiling_fan, :bed, :washing_machine, :television,
     :network, :table, :chair, images_attributes: [:id, :photo, :is_main, :_destroy]
   ]
 end

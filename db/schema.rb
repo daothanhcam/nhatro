@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150729025450) do
     t.integer  "capacity",        limit: 4
     t.string   "contact",         limit: 255
     t.text     "description",     limit: 65535
-    t.integer  "type",            limit: 4
+    t.integer  "house",            limit: 4
     t.string   "address",         limit: 255
     t.float    "rating",          limit: 24
     t.integer  "user_id",         limit: 4

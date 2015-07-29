@@ -4,6 +4,12 @@
     <div id="input-form">
       <div id="input-form-text">
         <p>
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "address-input",
+            placeholder: t("address.title_input") %>
+        </p>
+        <p>
+          <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.label :capacity %>
           <%= f.text_field :capacity, class: "address-input",
             placeholder: t("address.capacity_input") %>
@@ -38,51 +44,66 @@
         <table>
           <tr>
             <td>
-              <%= f.label :parking %>
               <%= f.check_box :parking, class: "parking-checkbox" %>
+              <%= f.label :parking %>
             </td>
             <td>
-              <%= f.label :air_conditioner %>
               <%= f.check_box :air_conditioner, class: "parking-checkbox" %>
+              <%= f.label :air_conditioner %>
             </td>
             <td>
-              <%= f.label :ceiling_fan %>
               <%= f.check_box :ceiling_fan, class: "parking-checkbox" %>
+              <%= f.label :ceiling_fan %>
             </td>
           </tr>
           <tr>
             <td>
-              <%= f.label :bed %>
               <%= f.check_box :bed, class: "parking-checkbox" %>
+              <%= f.label :bed %>
             </td>
             <td>
-              <%= f.label :washing_machine %>
               <%= f.check_box :washing_machine, class: "parking-checkbox" %>
+              <%= f.label :washing_machine %>
             </td>
             <td>
-              <%= f.label :television %>
               <%= f.check_box :television, class: "parking-checkbox" %>
+              <%= f.label :television %>
             </td>
           </tr>
           <tr>
             <td>
-              <%= f.label :network %>
               <%= f.check_box :network, class: "parking-checkbox" %>
+              <%= f.label :network %>
             </td>
             <td>
-              <%= f.label :table %>
               <%= f.check_box :table, class: "parking-checkbox" %>
+              <%= f.label :table %>
             </td>
             <td>
-              <%= f.label :chair %>
               <%= f.check_box :chair, class: "parking-checkbox" %>
+              <%= f.label :chair %>
             </td>
           </tr>
         </table>
       </div>
     </div>
 
-    <div id="upload-images-form">
+    <div id="input-form-select">
+      <table>
+          <tr>
+            <td>
+              <%= f.label :region %>
+              <%= f.collection_select :region_id, Region.all, :id, :province, {include_blank: t("address.region")} %>
+            </td>
+            <td>
+              <%= f.label :house %>
+              <%= f.collection_select :house, Address.houses, :last, :first, {include_blank: t("address.house")} %>
+            </td>
+          </tr>
+        </table>
+    </div>
+
+    <div id="upload-images-form" data-images="<%= f.object.images.to_json %>">
       <div class="btn-group">
         <a class="btn-action-show-images btn btn-info toggler disabled"
           data-toggle="modal">
@@ -95,18 +116,19 @@
       <div id="images-form" style="display: none">
         <ul class="nav nav-tabs" id="tab-add-image">
         </ul>
-        <div class="tab-content"></div>
+        <div class="tab-content">
+        </div>
       </div>
     </div>
 
     <div id="map-add-address" style="display: block">
       <div id="latlng-box">
         <%= f.label :latitude %>
-        <%= f.text_field :lat, id: "form-lat", class: "latlng-input" %>
+        <%= f.text_field :lat, readonly: true, id: "form-lat", class: "latlng-input" %>
         <%= f.label :longitude %>
-        <%= f.text_field :lng, id: "form-lng", class: "latlng-input" %>
+        <%= f.text_field :lng, readonly: true, id: "form-lng", class: "latlng-input" %>
       </div>
-      <input id="pac-input" class="controls" type="text">
+      <input id="pac-input" class="controls" house="text">
       <div id="map-canvas"></div>
     </div>
     <br>

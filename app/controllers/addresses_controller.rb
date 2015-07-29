@@ -19,7 +19,6 @@ class AddressesController < ApplicationController
   end
 
   def show
-    @address = Address.find params[:id]
     @recent_addresses = Address.last Settings.num_of_recent_addresses
     @reviews = @address.reviews.page params[:page]
     @review = @address.reviews.build
@@ -34,12 +33,11 @@ class AddressesController < ApplicationController
 
   def new
     @address = Address.new
-    @image = @address.images.build
+    @image = @address.images
   end
 
   def create
     @address = Address.new address_params
-
     if @address.save
       redirect_to new_address_path, notice: t("address.create")
     else

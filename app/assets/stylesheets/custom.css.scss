@@ -140,7 +140,7 @@ html, body{
 }
 
 #map-add-address {
-  width: 638px;
+  width: 630px;
   height: 500px;
   margin-bottom: 30px;
 }
@@ -691,15 +691,12 @@ select.form-control {
   display: inline-block;
   width: 638px;
   margin-top: 15px;
-  height: 50px;
+  min-height: 50px;
   #tab-pane-left {
   width: 600px;
   float: left;
   display: inline-block;
-    .choose-address-image {
-      margin-top: 10px;
-    }
-    .set-avatar-checkbox{
+    .set-main-checkbox{
       margin-top: 10px;
       float: right !important;
       width: 20px;
@@ -712,6 +709,12 @@ select.form-control {
   .glyphicon-trash {
   display: none;
   }
+}
+
+.img-preview {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 10px;
 }
 
 .tab-content:hover .glyphicon-trash {
@@ -1071,6 +1074,7 @@ select.form-control {
 }
 
 #input-form-text {
+  width: 630px;
   min-height: 250px !important;
   display:inline-block;
   .textarea {
@@ -1086,9 +1090,15 @@ select.form-control {
 
 #input-form-checkbox {
   margin-top: 30px;
-  .parking-checkbox {
-  float: right;
-  margin-right: 200px !important;
+  td {
+    width: 220px;
+  }
+}
+
+#input-form-select {
+  td {
+    width: 300px;
+    padding-top: 10px;
   }
 }
 
@@ -1519,4 +1529,13 @@ hr {
   position: relative;
   height: 25px;
   width: 25px;
+}
+
+.choosed-address-image {
+  margin-top: 10px;
+  .img-preview {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px;
+  }
 }

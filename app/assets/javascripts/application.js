@@ -28,3 +28,4 @@
 //= require superfish
 //= require hoverIntent
 //= require visited_news
+//= require address
