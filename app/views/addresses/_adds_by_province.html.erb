@@ -9,8 +9,7 @@
     <div class="title">
       <%= link_to adds_by_province.title, address_path(adds_by_province),
         title: "adds_by_province.title", class: "visit",
-        data: {adds_by_province: adds_by_province.as_json.merge({
-          image_tag: image_tag_link(adds_by_province)})} %>
+        data: {adds_by_province: adds_by_province.as_json} %>
     </div>
     <div>
       <div class="col-md-6" id="first-column">
@@ -19,7 +18,7 @@
         <span class="fa fa-usd" id="fa-usd"></span>
         <%= t "price" %>
         <span class="num-info"><%= adds_by_province.simplify_price %>
-        </span>        
+        </span>
       </div>
       <div class="col-md-6">
         <span class="fa fa-square-o icon" id="fix-square"></span>
@@ -27,7 +26,7 @@
         <span class="capacity"><%= adds_by_province.capacity %>
         </span><br>
         <span class="glyphicon glyphicon-phone icon"></span>
-        <%= t "contact" %> 
+        <%= t "contact" %>
         <span class="contact num-info ">
           <%= adds_by_province.contact %></span>
       </div>
