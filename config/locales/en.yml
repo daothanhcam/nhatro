@@ -63,6 +63,7 @@ en:
     edit_addess: "Form Edit Address"
     save_address: "Save change"
     visited_new: "Visited News"
+    create: "Address was successfully created!"
     updated: "Address was successfully updated."
     destroy: "Address was successfully destroyed."
     show_map: "Show Map"
