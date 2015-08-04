@@ -1,11 +1,14 @@
 <div id="tab-pane-left">
-  <div class: "choose-address-image">
-    <%= f.file_field :photo  %>
+  <div class="choose-address-image">
+    <%= f.file_field :photo, class: "file-address" %>
     <%= f.hidden_field :_destroy %>
+    <div class="upload-preview" style="display: none">
+      <%= image_tag("", class: "img-preview img-thumbnail preview") %>
+    </div>
   </div>
-  <div class: "set-avatar-checkbox">
+  <div class: "set-main-checkbox">
+    <%= f.check_box :is_main, class: "is-main-checkbox" %>
     <span><%= t "address.choose_main_image" %></span>
-    <%= f.check_box :is_main %>
   </div>
 </div>
 <div id="tab-pane-right">
