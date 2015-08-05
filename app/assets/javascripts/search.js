@@ -1,41 +1,39 @@
 $(document).ready(function() {
-  function format_square(name) {
-    $("select#" + name).find("option").each(function(i){
-      var value = $(this).text(), new_option;
-      new_option = "<option>" + value + " m&sup2" + "</option>";
+  function format_square(id) {
+    $("select#" + id).find("option").each(function(i) {
+      var text = $(this).text();
+      var new_option = "<option>" + text + " m&sup2" + "</option>";
 
       if(i !== 0)
         $(this).replaceWith(new_option);
     });
   }
 
-  function min_change(name) {
-    var text_select = parseInt($("#min_" + name + " option:selected").text(), 10);
-    var max_lenght = $("#max_" + name + " option").size();
+  function min_change(min, max) {
+    var text_select = parseInt($(min + " option:selected").text());
 
-    for (var i = 0; i < max_lenght; i++) {
-      var text_collect = parseInt($("#max_" + name).find("option").eq(i).text(), 10);
+    $(max).find("option").each(function(i) {
+      var text_collect = parseInt($(max).find("option").eq(i).text());
 
       if(text_select > text_collect)
-        $("#max_" + name).find("option").eq(i).hide();
+        $(max).find("option").eq(i).hide();
       else
-        $("#max_" + name).find("option").eq(i).show();
-    }
+        $(max).find("option").eq(i).show();
+    });
   }
 
 
-  function max_change(name) {
-    var text_select = parseInt($("#max_" + name + " option:selected").text(), 10);
-    var min_lenght = $("#min_"+ name +" option").size();
+  function max_change(min, max) {
+    var text_select = parseInt($(max + " option:selected").text());
 
-    for(var i = 0; i < min_lenght; i++){
-      var text_collect = parseInt($("#min_" + name).find("option").eq(i).text(), 10);
+    $(min).find("option").each(function(i) {
+      var text_collect = parseInt($(min).find("option").eq(i).text());
 
-      if(text_select < text_collect)
-        $("#min_" + name).find("option").eq(i).hide();
+      if(text_select > text_collect)
+        $(min).find("option").eq(i).show();
       else
-        $("#min_" + name).find("option").eq(i).show();
-    }
+        $(min).find("option").eq(i).hide();
+    });
   }
 
   $("#address_search").submit(function(event) {
@@ -68,9 +66,8 @@ $(document).ready(function() {
       min_price === "" && max_price === "" && address === "" && keyword === "" &&
       !park1 && !park2 && !air_con1 && !air_con2 && !fan1 && !fan2 &&
       !wash1 && !wash2 && !tv1 && !tv2 && !network1 && !network2 &&
-      !table1 && !table2 && !chair1 && !chair2 && !bed1 && !bed2) {
+      !table1 && !table2 && !chair1 && !chair2 && !bed1 && !bed2)
         event.preventDefault();
-    }
   });
 
   $("select").change(function() {
@@ -78,16 +75,16 @@ $(document).ready(function() {
 
     switch(id){
       case "min_square":
-        min_change("square");
+        min_change("#min_square", "#max_square");
         break;
       case "max_square":
-        max_change("square");
+        max_change("#min_square", "#max_square");
         break;
       case "min_price":
-        min_change("price");
+        min_change("#min_price", "#max_price");
         break;
       case "max_price":
-        max_change("price");
+        max_change("#min_price", "#max_price");
         break;
       default:
         console.log("Sorry, we are out of " + id + ".");

@@ -23,5 +23,5 @@ Rails.application.routes.draw do
 
   resources :searchs, only: :index
   resources :maps, only: :show
-  resources :users
+  resources :users, only: :show
 end
