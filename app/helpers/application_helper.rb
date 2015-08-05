@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def image_tag_link adds_by_province
-    if adds_by_province.images.first.photo.present?
+    if adds_by_province.images.any?
       image_tag adds_by_province.images.first.photo.small_thumb.url
     else
       image_tag Settings.images.house_image

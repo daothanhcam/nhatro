@@ -35,9 +35,9 @@ module RailsAdmin::Address
         field :capacity
         field :contact
         field :description
-        field :type, :enum do
+        field :house, :enum do
           enum do
-            Address::types.keys
+            Address::houses.keys
           end
         end
         field :address
