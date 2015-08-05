@@ -1,10 +1,6 @@
 <div class="recent_address col-md-12">
   <div class="col-md-3">
-    <% if recent_address.images.first.present? %>
-      <%= image_tag recent_address.images.first.photo.url %>
-    <% else %>
-      <%= image_tag "house-thumb.jpg" %>
-    <% end %>
+    <%= image_tag_link recent_address %>
   </div>
   <div class="col-md-9" >
     <div class="title_right" title="<%= recent_address.title %>">

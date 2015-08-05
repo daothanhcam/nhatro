@@ -97,7 +97,7 @@
             </td>
             <td>
               <%= f.label :house %>
-              <%= f.collection_select :house, Address.houses, :last, :first, {include_blank: t("address.house")} %>
+              <%= f.collection_select :house, Address.houses, :first, :first, {include_blank: t("address.house")} %>
             </td>
           </tr>
         </table>

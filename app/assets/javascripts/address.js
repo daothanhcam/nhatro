@@ -1,20 +1,31 @@
 function remove_fields(link) {
   var tabAddImage = $("#tab-add-image");
+  var tabContent = $(".tab-content");
+
   li_current_active = tabAddImage.find("li.active");
   li_previous = li_current_active.prev();
+  li_next = li_current_active.next();
 
-  li_previous.attr("class", "active");
-  li_current_active.hide();
-
-  var tabContent = $(".tab-content");
   div_curr_active = tabContent.find("div.active");
   div_curr_active.find("[id$=_destroy]").attr("value", "1");
 
-  div_pre_active = div_curr_active.prev();
-  div_pre_active.attr("class", "tab-pane active")
-  div_curr_active.hide();
+  div_pre = div_curr_active.prev();
+  div_next = div_curr_active.next();
 
-  if (tabContent.find("div").length === 0) {
+  if (li_next.find("a:visible").length !== 0 ) {
+    li_next.attr("class", "active");
+    div_next.attr("class", "tab-pane active");
+    li_current_active.remove();
+    div_curr_active.hide();
+  }
+  else {
+    li_previous.attr("class", "active");
+    div_pre.attr("class", "tab-pane active")
+    li_current_active.remove();
+    div_curr_active.hide();
+  }
+
+  if (tabContent.find("div.tab-pane:visible").length === 0) {
     $("#images-form").hide("slow");
     $(".btn-action-show-images").attr("class", "btn-action-show-images btn btn-info toggler disabled");
     $(".btn-action-show-images").find("i").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-right");
