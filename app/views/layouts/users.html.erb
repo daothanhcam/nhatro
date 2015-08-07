@@ -15,6 +15,7 @@
     <div id="header_wrapper" data-user-id="<%= current_user.nil? ? "" : current_user.id %>">
       <%= render "shared/header" %>
     </div>
+    <%= render "shared/flash" %>
     <div class="main-container">
       <div class="row">
         <%= render "shared/navbar" %>
