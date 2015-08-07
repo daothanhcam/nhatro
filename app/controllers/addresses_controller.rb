@@ -48,7 +48,7 @@ class AddressesController < ApplicationController
 
   def update
     if @address.update address_params
-      redirect_to @address, notice: t("address.updated")
+      redirect_to @address, success: t("address.updated")
     else
       render :edit
     end
@@ -56,7 +56,7 @@ class AddressesController < ApplicationController
 
   def destroy
     @address.destroy
-    redirect_to addresses_url, notice: t("address.destroyed")
+    redirect_to request.referer || root_ur, alert: t("address.destroy")
   end
 
   private

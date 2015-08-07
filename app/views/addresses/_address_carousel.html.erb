@@ -1,6 +1,6 @@
 <div id="address_carousel" class="carousel slide">
   <div class="carousel-inner">
-    <% @addresses.each do |address| role="listbox" %>
+    <% @recent_addresses.each do |address| %>
       <div class="item", id="fix_size_image"> 
         <% if address.images.any? %>
           <%=link_to image_tag(address.images.first.photo.url),
