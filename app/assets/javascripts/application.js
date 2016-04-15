@@ -22,10 +22,6 @@
 //= require search
 //= require review
 //= require comment
-//= require websocket_rails/main
-//= require custom_websocket
 //= require sort
-//= require superfish
-//= require hoverIntent
 //= require visited_news
 //= require address

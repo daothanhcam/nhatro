@@ -1,14 +1,2 @@
 <footer id="footer">
-  <div class="container">
-    <% Menu.bottom.roots.each do |root| %>
-      <div class="col-md-3">
-        <h4><%= link_to root.name, root.url %></h4>
-        <% if root.has_children? %>
-          <% root.children.each do |children| %>
-            <li><%= link_to children.name, children.url %></li>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
 <footer>
