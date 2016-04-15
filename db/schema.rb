@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729025450) do
+ActiveRecord::Schema.define(version: 20150724025508) do
 
   create_table "addresses", force: :cascade do |t|
     t.float    "lng",             limit: 24
@@ -43,20 +43,12 @@ ActiveRecord::Schema.define(version: 20150729025450) do
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
-  create_table "chats", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.string   "content",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "comments", force: :cascade do |t|
-    t.text     "content",    limit: 65535
+    t.string   "content",    limit: 255
     t.integer  "user_id",    limit: 4
     t.integer  "review_id",  limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "image",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "comments", ["review_id"], name: "index_comments_on_review_id", using: :btree
@@ -85,34 +77,21 @@ ActiveRecord::Schema.define(version: 20150729025450) do
     t.string   "photo",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.boolean  "is_main",    limit: 1
   end
-
-  create_table "menus", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "ancestry",   limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "url",        limit: 255
-    t.integer  "postion",    limit: 4
-  end
-
-  add_index "menus", ["ancestry"], name: "index_menus_on_ancestry", using: :btree
 
   create_table "regions", force: :cascade do |t|
     t.string   "province",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.boolean  "is_home",    limit: 1
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text     "content",    limit: 65535
-    t.float    "point",      limit: 24,    default: 0.0
+    t.string   "content",    limit: 255
+    t.float    "point",      limit: 24,  default: 0.0
     t.integer  "user_id",    limit: 4
     t.integer  "address_id", limit: 4
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "image",      limit: 255
   end
 
