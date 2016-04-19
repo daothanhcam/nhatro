@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724025508) do
+ActiveRecord::Schema.define(version: 20160420161610) do
 
   create_table "addresses", force: :cascade do |t|
     t.float    "lng",             limit: 24
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150724025508) do
     t.boolean  "network",         limit: 1
     t.boolean  "table",           limit: 1
     t.boolean  "chair",           limit: 1
+    t.integer  "rate_num",        limit: 4
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
@@ -87,16 +88,24 @@ ActiveRecord::Schema.define(version: 20150724025508) do
 
   create_table "reviews", force: :cascade do |t|
     t.string   "content",    limit: 255
-    t.float    "point",      limit: 24,  default: 0.0
     t.integer  "user_id",    limit: 4
     t.integer  "address_id", limit: 4
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "image",      limit: 255
   end
 
   add_index "reviews", ["address_id"], name: "index_reviews_on_address_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
+  create_table "user_rates", force: :cascade do |t|
+    t.integer "user_id",    limit: 4
+    t.integer "address_id", limit: 4
+    t.integer "point",      limit: 4, null: false
+  end
+
+  add_index "user_rates", ["address_id"], name: "index_user_rates_on_address_id", using: :btree
+  add_index "user_rates", ["user_id"], name: "index_user_rates_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255
