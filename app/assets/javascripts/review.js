@@ -6,9 +6,9 @@ $(document).ready(function(){
   //   }
   // });
 
-  $("#show-score").raty({
+  $("#show_average_rate").raty({
     readOnly: true,
-    score: $("#show-score").attr("data-score")
+    score: $("#show_average_rate").attr("data-score")
   });
 
   // $(".show-point").raty({
