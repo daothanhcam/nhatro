@@ -23,6 +23,10 @@
         if(data.status == 200){
           $(".rate-address #rate input").val(data.point);
           $("#user_rate_point").val(data.point)
+          $("#show_average_rate").raty({
+            readOnly: true,
+            score: data.average_rate
+          });
         }else{
           $(".rate-address #rate input").val($("#user_rate_point").val());
         }

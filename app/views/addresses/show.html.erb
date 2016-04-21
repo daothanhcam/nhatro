@@ -2,6 +2,9 @@
   <div class="address-info">
     <div class="title">
       <h2><%= @address.title %></h2>
+      <span> Average Rate </span>
+      <div id="show_average_rate" data-score="<%= @address.average_point %>"></div>
+      <p>
         <%= t "posted_at" %>
         <%= @address.created_at.to_date.to_formatted_s :long_ordinal %>
       </p>

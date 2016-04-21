@@ -59,7 +59,7 @@ class Address < ActiveRecord::Base
   end
 
   def average_point
-    reviews.average :point
+    user_rates.average :point
   end
 
   PARAMS_ATTRIBUTES = [

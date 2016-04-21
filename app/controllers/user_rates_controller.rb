@@ -14,8 +14,9 @@ class UserRatesController < ApplicationController
     @user_rate.assign_attributes user_rate_params
     respond_to do |format|
       if @user_rate.save
+        average_rate = @address.user_rates.average :point
         format.json do
-          render json: {point: @user_rate.point, status: 200}
+          render json: {average_rate: average_rate, point: @user_rate.point, status: 200}
         end
       else
         format.json do
