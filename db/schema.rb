@@ -90,11 +90,10 @@ ActiveRecord::Schema.define(version: 20160421023628) do
 
   create_table "reviews", force: :cascade do |t|
     t.string   "content",    limit: 255
-    t.float    "point",      limit: 24,  default: 0.0
     t.integer  "user_id",    limit: 4
     t.integer  "address_id", limit: 4
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "image",      limit: 255
   end
 

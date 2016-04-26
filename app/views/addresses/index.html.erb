@@ -29,12 +29,16 @@
   <div id="right-content">
 
     <div id="bnt-box" class="row">
-      <button class="btn btn-danger col-md-10 col-md-offset-1">
-        <%= t "button.add_address" %>
-      </button>
-      <button class="btn btn-danger col-md-10 col-md-offset-1">
-        <%= t "button.quick_guide" %>
-      </button>
+      <%= link_to new_address_path do %>
+        <button class="btn btn-danger col-md-10 col-md-offset-1">
+          <%= t "button.add_address" %>
+        </button>
+      <% end %>
+      <%= link_to "#" do %>
+        <button class="btn btn-danger col-md-10 col-md-offset-1">
+          <%= t "button.quick_guide" %>
+        </button>
+      <% end %>
     </div>
     <div id="recent-address-box" class="row">
       <div id="right-content-title">
