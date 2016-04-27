@@ -201,3 +201,68 @@ $(document).on("click", ".icon-map", function(){
     "height" : "80%"
   });
 });
+
+$(document).ready(function(){
+    $("#address_address").change(function(){
+        var url = "https://maps.googleapis.com/maps/api/geocode/json";
+        var address = $("#address_address").val();
+        var key = "AIzaSyDtjwVAXkx4qFNhHJWglsyQIMX-7WF_7zs";
+
+        $.get(url, {address: address, key: key}, function(data, status){
+            switch (data.status){
+                case "OK":
+                    processResponseOK(data);
+                    break;
+                case "ZERO_RESULTS":
+                    processResponseZeroResult();
+                    break;
+                default:
+                    break;
+            }
+        });
+    });
+
+    function processResponseOK(data){
+        var location = data.results[0].geometry.location;
+        var address = data.results[0].formatted_address;
+
+        map.setCenter(new google.maps.LatLng(location.lat, location.lng));
+        if (markers[0] == undefined){
+            markers[0] = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        } else
+            markers[0].setPosition(location);
+    }
+
+    function processResponseZeroResult(){
+        alert("Have 0 result!");
+    }
+})
+
+var rad = function(x) {
+    return x * Math.PI / 180;
+};
+
+var getDistance = function(p1, p2) {
+    var R = 6378137; // Earth’s mean radius in meter
+    var dLat = rad(p2.lat() - p1.lat());
+    var dLong = rad(p2.lng() - p1.lng());
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+        Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    var d = R * c;
+    return d; // returns the distance in meter
+};
+
+function validateClickPoint(location){
+    if (markers[0] == undefined) alert("Please enter the address name!");
+    else {
+        var distance = getDistance(markers[0].getPosition(), location);
+        console.log(distance);
+        if (distance > 1000.0) alert("Please choose true location!");
+
+    }
+}
