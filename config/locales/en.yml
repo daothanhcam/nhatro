@@ -19,6 +19,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 en:
+  form:
+    required: Required
   hello: "Hello world"
   app_name: "Rental House System"
   login: "Login"

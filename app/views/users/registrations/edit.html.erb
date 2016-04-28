@@ -6,7 +6,7 @@
       glyphicon-arrow-left", title: t("button.back") %>
     <%= f.submit t("button.update_account"), class: "btn btn-primary" %>
   </div>
-  <div class="col-md-8 well">
+  <div class="col-md-8 well" id="edit-user-form">
     <%= devise_error_messages! %>
 
     <%= f.label :name %>
@@ -22,19 +22,29 @@
       </div>
     <% end %>
 
-    <%= f.label :password %> <i><%= t("pages.form.leave_blank") %></i>
-    <%= f.password_field :password, autocomplete: "off", class:
-      "form-control" %>
+    <%= f.label :current_password %>&nbsp;<i><%= t "form.required" %></i>
+    <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
 
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off",
-      class: "form-control" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
 
-    <%= f.label :current_password %> <i><%= t("pages.form.require_password") %></i>
-    <%= f.password_field :current_password, autocomplete: "off",
-      class: "form-control" %>
-   <hr/>
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "form-control" %>
+
+    <%= f.label :age %>
+    <%= f.text_field :age, class: "form-control" %>
+
+    <%= f.label :job %>
+    <%= f.text_field :job, class: "form-control" %>
+
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number, class: "form-control" %>
+
     <span>
+      <%= f.label :avatar %>
       <%= f.file_field :avatar %>
     </span>
   </div>
