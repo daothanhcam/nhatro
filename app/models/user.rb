@@ -10,12 +10,17 @@ class User < ActiveRecord::Base
   has_many :chats
   has_many :user_rates, dependent: :destroy
 
+  validates :name, presence: true, length: {maximum: Settings.validations.name_max_length}
+  validates :email, presence: true, uniqueness: true, length: {maximum: Settings.validations.name_max_length}
+  validates :address, length: {maximum: Settings.validations.varchar_length}
+  validates :job, length: {maximum: Settings.validations.varchar_length}
+
   enum role: [:normal, :admin]
 
   mount_uploader :avatar, PhotoUploader
 
   PARAMS_ATTRIBUTES = [:name, :email, :password, :password_confirmation,
-    :current_password, :avatar]
+    :current_password, :avatar, :age, :address, :job, :phone_number]
 
   def google_oauth2
     identities.where(provider: "google_oauth2").first

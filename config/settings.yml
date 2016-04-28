@@ -1,3 +1,6 @@
+validations:
+  varchar_length: 255
+  name_max_length: 64
 roles:
   normal: 0
   admin: 1
